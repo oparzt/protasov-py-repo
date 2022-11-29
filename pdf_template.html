@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF File</title>
+
+    <style>
+        body {
+            font-family: "Verdana", sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        caption {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        td, th {
+            padding: 5px;
+            border: 1px solid #000000;
+        }
+
+        table:last-child td:nth-child(3),
+        table:last-child th:nth-child(3){
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Аналитика по зарплатам и городам для профессии {{ vac_name }}
+    </h1>
+    <img src="{{ graph }}">
+
+    <table>
+        <caption>Статистика по годам</caption>
+
+        <thead>
+            <tr>
+                {% for item in table1Headers %}
+                <th>{{ item }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        {% for item in table1Data %}
+        <tr>
+            {% for subitem in item %}
+            <td>{{ subitem }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <table>
+        <caption>Статистика по городам</caption>
+
+        <thead>
+            <tr>
+                {% for item in table2Headers %}
+                <th>{{ item }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        {% for item in table2Data %}
+        <tr>
+            {% for subitem in item %}
+            <td>{{ subitem }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
